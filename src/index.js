@@ -1,10 +1,20 @@
 const express = require('express');
+const { engine } = require('express-handlebars');
+const path = require('path');
 
 const app = express();
 
+app.set('views', path.resolve('./src/views'));
+app.engine('hbs', engine({
+    extname: 'hbs',
+    
+}));
+app.set('view engine', 'hbs')
+
 app.all('/', (req, res) => {
-    res.write('Hello world!');
-    res.end();
+    res.render('index', {
+        layout: false
+    });
 })
 
 app.listen(5000, () => {
