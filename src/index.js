@@ -12,9 +12,7 @@ app.engine('hbs', engine({
 app.set('view engine', 'hbs')
 
 app.all('/', (req, res) => {
-    res.render('index', {
-        layout: false
-    });
+    res.render('index');
 })
 
 app.listen(5000, () => {
